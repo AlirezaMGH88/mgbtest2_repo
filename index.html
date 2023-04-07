@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta chartset="utf-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1">
+        <title> How to have multiple charts in one page with Chart Js</title>
+        <style>
+            .chartBox{
+                width: 500px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="chartBox">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <div class="chartBox">
+            <canvas id="lineChart"></canvas>
+        </div>
+
+        <div class="chartBox">
+            <canvas id="pieChart"></canvas>
+        </div>
+          
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <script>
+        // setup
+        const data = {
+            labels: ['CPT-63100', 'CPT-63275', 'CPT-63300'],
+            datasets: [{
+                label: 'Metastatic Spinal Cord Compression - CPT',
+                data: [75, 100, 38],
+                borderWidth: 1
+            }]
+        }
+
+        // config 
+        const config = {
+            type: 'bar',
+            data,
+            options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+            }
+        }
+
+
+        // render inti block
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        
+        // linechart
+        const dataline = {
+            labels: ['ICD10-C7951','ICD10-G95'],
+            datasets: [{
+                label: 'Metastatic Spinal Cord Compression - ICD',
+                data: [140, 80],
+                borderWidth: 1
+            }]
+        }
+        // config line 
+        const config2 = {
+            type: 'bar',
+            data:dataline,
+            options: {
+            scales: {
+                y: {
+                beginAtZero: true
+                }
+            }
+            }
+        }
+        // render init block
+        const lineChart = new Chart(
+            document.getElementById('lineChart'),
+            config2
+        );
+        
+
+        // pie chart
+        
+        const datapie = {
+            labels: ['Male', 'Female'],
+            datasets: [{
+                label: 'Metastatic Spinal Cord Compression - Gender',
+                data: [120, 100],
+                borderWidth: 1
+            }]
+        }
+        
+        // config pie
+        const config3 = {
+            type: 'pie',
+            data: datapie,
+            options: {}
+        }
+        // render init block
+        const pieChart = new Chart(
+            document.getElementById('pieChart'),
+            config3
+        );
+
+        </script>
+
+
+    </body>
+
+</html>
+
+
